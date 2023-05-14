@@ -75,10 +75,10 @@ def mutate(paths, mutation_rate):
     return paths
 
 
-def tsp_gen(n_paths, n_parents, cities, adj_matrix, n_gens, mutation_rate=0.01):
+def tsp_gen(n_paths, n_parents, cities, adj_matrix, n_gens, mutation_rate=0.1):
     gens = []
     paths = np.array([np.random.permutation(cities) for i in range(n_paths)])
-    min_distance = 9999
+    min_distance = np.inf
     best_path = None
 
     for gen in range(1, n_gens + 1):
@@ -131,7 +131,7 @@ if __name__ == "__main__":
     fig = px.line(
         x=[i[0] for i in gens],
         y=[i[1] for i in gens],
-        title=f"Best Path: {title}",
+        title=f"Optimální cesta: {title}",
         labels={"x": "Generace", "y": "Fitness value"},
     )
     fig.show()
