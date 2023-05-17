@@ -7,7 +7,7 @@ def distance(citya, cityb, cities, adj_matrix):
     return adj_matrix[cities.index(citya), cities.index(cityb)]
 
 
-def fitness(paths, cities, adj_matrix):
+def f(paths, cities, adj_matrix):
     return [
         sum(
             [
@@ -32,17 +32,6 @@ def select(fit_values, n_parents):
 
 
 def crossover(n_paths, selected, paths):
-    """
-    4 je polovina 1 rodice
-
-    Args:
-        n_paths (_type_): _description_
-        selected (_type_): _description_
-        paths (_type_): _description_
-
-    Returns:
-        _type_: _description_
-    """
     next_gen = []
     while len(next_gen) < n_paths:
         parents = random.sample(selected, 2)
@@ -82,7 +71,7 @@ def tsp_gen(n_paths, n_parents, cities, adj_matrix, n_gens, mutation_rate=0.1):
     best_path = None
 
     for gen in range(1, n_gens + 1):
-        fit_values = fitness(paths, cities, adj_matrix)
+        fit_values = f(paths, cities, adj_matrix)
         selected = select(fit_values, n_parents)
         paths = crossover(n_paths, selected, paths)
         paths = mutate(paths, mutation_rate)

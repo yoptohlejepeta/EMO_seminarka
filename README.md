@@ -2,7 +2,9 @@
 
 Seminárka na předmět KI/EMO
 
-* Zloděj s batohem (batoh)
+## Obsah
+
+* Zloděj s batohem - slepé prohledávání, horolezec (batoh)
 * Problém obchodího cestujícího (tsp)
 * Partical swarm optimization (pso)
 

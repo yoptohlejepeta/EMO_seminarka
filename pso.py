@@ -12,7 +12,7 @@ def f(x, y):
 
 
 def new_velocity(particles, velocity, pbest, gbest, w_min=0.5, max=1, c1=1, c2=0.1):
-    new_velocity = np.array([0.0 for i in range(len(particles))])
+    new_velocity = np.zeros(len(particles))
     random1 = random.uniform(0, max)
     random2 = random.uniform(0, max)
     w = random.uniform(w_min, max)
