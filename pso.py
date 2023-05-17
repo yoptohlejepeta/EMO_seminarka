@@ -11,11 +11,10 @@ def f(x, y):
     return (x**2 + y - 11) ** 2 + (x + y**2 - 7) ** 2
 
 
-def new_velocity(particles, velocity, pbest, gbest, w_min=0.5, max=1, c1=1, c2=0.1):
+def new_velocity(particles, velocity, pbest, gbest, max=1, w=0.8, c1=1, c2=0.1):
     new_velocity = np.zeros(len(particles))
     random1 = random.uniform(0, max)
     random2 = random.uniform(0, max)
-    w = random.uniform(w_min, max)
     for i in range(len(particles)):
         new_velocity[i] = (
             w * velocity[i] + c1 * random1 * (pbest[i] - particles[i]) + c2 * random2 * (gbest[i] - particles[i])
@@ -34,7 +33,7 @@ def pso(
     particle_best_fitness = [f(particle[0], particle[1]) for particle in particles]
     glob_best = np.argmin(particle_best_fitness)
     glob_best_position = particles[glob_best]
-    velocity = [[0 for j in range(2)] for i in range(population)]
+    velocity = np.zeros((population, 2))
     gen = 0
 
     while np.average(particle_best_fitness) > epsilon:
@@ -94,4 +93,5 @@ if __name__ == "__main__":
         image = Image.open(image_path)
 
         frames.append(image)
+
     imageio.mimsave("gifs/pso.gif", frames, duration=frame_duration)
