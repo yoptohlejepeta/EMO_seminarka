@@ -1,4 +1,4 @@
-# EMO_seminarka
+# EMO seminárka
 
 Seminárka na předmět KI/EMO
 

@@ -20,13 +20,13 @@ def f(paths, cities, adj_matrix):
 
 
 def select(fit_values, n_parents):
-    cumsum = np.cumsum(fit_values / sum(fit_values))
+    probs = np.cumsum(fit_values / sum(fit_values))
     selected = []
     while len(selected) < n_parents:
         r = random.random()
-        for i in cumsum:
+        for i in probs:
             if i > r:
-                selected.append(np.where(cumsum == i)[0][0])
+                selected.append(np.where(probs == i)[0][0])
                 break
     return selected
 

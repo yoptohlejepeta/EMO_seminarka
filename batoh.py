@@ -3,12 +3,12 @@ import plotly.express as px
 
 
 def f(max_weight, items, alpha):
-    value = 0
     weight = 0
+    value = 0
     for i in range(len(alpha)):
         if alpha[i] == 1 and (weight + items[i][0]) < max_weight:
-            value += items[i][1]
             weight += items[i][0]
+            value += items[i][1]
     return value
 
 def mutate(alpha):
@@ -61,7 +61,7 @@ if __name__ == "__main__":
                 (10, 800), 
                 (10, 1000)]
 
-    alpha_max, f_fin, iters = blind_algorithm(50, predmety, 30)
+    alpha_max, f_fin, iters = blind_algorithm(100, predmety, 30)
     best = "".join(map(str, alpha_max))
 
     fig = px.line(
@@ -72,7 +72,7 @@ if __name__ == "__main__":
     )
     fig.show()
 
-    alpha_max, f_fin, iters = hill_climb(1000, predmety, 30)
+    alpha_max, f_fin, iters = hill_climb(100, predmety, 30)
     best = "".join(map(str, alpha_max))
 
     fig = px.line(
