@@ -9,6 +9,7 @@ def f(max_weight, items, alpha):
         if alpha[i] == 1 and (weight + items[i][0]) < max_weight:
             weight += items[i][0]
             value += items[i][1]
+    
     return value
 
 def mutate(alpha):
@@ -16,6 +17,7 @@ def mutate(alpha):
     while alpha[swap[0]] == alpha[swap[1]]:
         swap = random.sample(range(len(alpha)), 2)
     alpha[swap[0]], alpha[swap[1]] = alpha[swap[1]], alpha[swap[0]]
+    
     return alpha
 
 
@@ -28,6 +30,7 @@ def blind_algorithm(tmax, items, max_weight):
         if f(max_weight, items, alpha) > f_fin:
             alpha_max = alpha
             f_fin = f(max_weight, items, alpha)
+    
     return alpha_max, f_fin, iters
 
 def hill_climb(tmax, items, max_weight):
@@ -41,12 +44,13 @@ def hill_climb(tmax, items, max_weight):
             f_fin =  f_x
             alpha_max = new_alpha
         iters.append((time, f_fin))
+    
     return alpha_max, f_fin, iters
 
 
 if __name__ == "__main__":
 
-    predmety = [(1, 10),
+    items = [(1, 10),
                 (1, 100),
                 (1, 150),
                 (1, 100),
@@ -61,7 +65,7 @@ if __name__ == "__main__":
                 (10, 800), 
                 (10, 1000)]
 
-    alpha_max, f_fin, iters = blind_algorithm(100, predmety, 30)
+    alpha_max, f_fin, iters = blind_algorithm(100, items, 30)
     best = "".join(map(str, alpha_max))
 
     fig = px.line(
@@ -72,7 +76,7 @@ if __name__ == "__main__":
     )
     fig.show()
 
-    alpha_max, f_fin, iters = hill_climb(100, predmety, 30)
+    alpha_max, f_fin, iters = hill_climb(100, items, 30)
     best = "".join(map(str, alpha_max))
 
     fig = px.line(

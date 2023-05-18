@@ -7,8 +7,8 @@ import imageio
 
 
 def f(x, y):
-    return (x**2 + y - 11) ** 2 + (x + y**2 - 7) ** 2
-    # return (x+2*y-7)**2+(2*x+y-5)**2 # (1,3)
+    # return (x**2 + y - 11) ** 2 + (x + y**2 - 7) ** 2
+    return (x+2*y-7)**2+(2*x+y-5)**2 # (1,3)
 
 
 def new_velocity(

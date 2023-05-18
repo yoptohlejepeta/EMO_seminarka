@@ -121,6 +121,6 @@ if __name__ == "__main__":
         x=[i[0] for i in gens],
         y=[i[1] for i in gens],
         title=f"Optimální cesta: {title}",
-        labels={"x": "Generace", "y": "Fitness value"},
+        labels={"x": "Generace", "y": "Fitness"},
     )
     fig.show()
