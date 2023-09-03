@@ -81,10 +81,6 @@ if __name__ == "__main__":
     position_min = -10
     position_max = 10
 
-    for filename in os.listdir(directory):
-        file_path = os.path.join(directory, filename)
-        os.remove(file_path)
-
     pso(population, position_min, position_max)
 
     frames = []
@@ -98,3 +94,7 @@ if __name__ == "__main__":
         frames.append(image)
 
     imageio.mimsave("gifs/pso.gif", frames, duration=frame_duration)
+
+    for filename in os.listdir(directory):
+        file_path = os.path.join(directory, filename)
+        os.remove(file_path)
